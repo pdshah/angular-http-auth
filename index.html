@@ -3,25 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Angular authorization demo application</title>
-
-    <link rel="stylesheet" href="app/main.css" type="text/css" media="screen" />
-
-    <script type="text/javascript">
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34102546-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>
-
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
   </head>
-  
   <body ng-app="angular-auth-demo" class="auth-demo-application waiting-for-angular"> 
 
     <a href="https://github.com/witoldsz/angular-http-auth">
@@ -36,17 +19,17 @@
 
       <div id="login-holder">
         <div id="loginbox">
-          <div id="login-inner" ng:controller="LoginController">
+          <div id="login-inner" ng:controller="AccountController">
             Note: there is no need to enter any credentials.<br>&nbsp;
-            <form ng-submit="submit()">
+            <form ng-submit="AccountController.authenticate(loginModel)">
               <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <th>Username</th>
-                  <td><input type="text" class="login-inp" ng-model="username"/></td>
+                  <td><input type="text" class="login-inp" ng-model="loginModel.username"/></td>
                 </tr>
                 <tr>
                   <th>Password</th>
-                  <td><input type="password" class="login-inp" ng-model="password"/></td>
+                  <td><input type="password" class="login-inp" ng-model="loginModel.password"/></td>
                 </tr>
                 <tr>
                   <th></th>
@@ -59,7 +42,7 @@
         </div>
       </div>
 
-      <div id="content" ng-controller="ContentController">
+      <div id="content" ng-controller="AccountController">
 
         <h1>HTTP Auth Interceptor Module Demo</h1>
         <h2>for AngularJS</h2>
@@ -94,7 +77,7 @@
         <hr>
         <br>&nbsp;
         <h3>Enter some data and submit to send and access public data.</h3>
-        <form ng-submit="publicAction()">
+        <form ng-submit="AccountController.publicAction()">
           Enter public data: 
           <input type="text" ng-model="publicData">
           <input type="submit" value="Submit"></input>
@@ -105,7 +88,7 @@
         <br/>
 
         <h3>Enter some data and submit to send and access protected data.</h3>
-        <form ng-submit="restrictedAction()">
+        <form ng-submit="AccountController.restrictedAction()">
           Enter restricted data:
           <input type="text" ng-model="restrictedData">
           <input type="submit" value="Submit"></input>
@@ -116,7 +99,7 @@
         <br/>
 
         <h3>Press the button to log out.</h3>
-        <input type="button" value="Log out" ng-click="logout()"></input>
+        <input type="button" value="Log out" ng-click="AccountController.logout()"></input>
         <p>
           The button will tell the server to forget about your session and also
           it will remove sensitive data from page. 
@@ -135,21 +118,6 @@
         
         <hr>
         <br>&nbsp;
-    
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'angular-http-auth'; // required: replace example with your forum shortname
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </div>
     </div>
         
@@ -157,9 +125,8 @@
     <script src="lib/angular-1.0.1.js" type="text/javascript"></script>
     <script src="lib/angular-mocks-1.0.1.js" type="text/javascript"></script>
     <script src="lib/http-auth-interceptor.js" type="text/javascript"></script>
-    <script src="app/content-mocks.js" type="text/javascript"></script>
-    <script src="app/main.js" type="text/javascript"></script>
-    <script src="app/login.js" type="text/javascript"></script>
-    <script src="app/content.js" type="text/javascript"></script>
+    <script src="account/content-mocks.js" type="text/javascript"></script>
+    <script src="account/main.js" type="text/javascript"></script>
+    <script src="account/accountController.js" type="text/javascript"></script>
   </body>
 </html>
