@@ -1,4 +1,4 @@
-angular.module('angular-auth-demo', ['http-auth-interceptor','content-mocks'])
+angular.module('angular-auth-demo', ['http-auth-interceptor','accountControllerMock'])
   /**
    * This directive will find itself inside HTML as a class,
    * and will remove that class, so CSS will remove loading image and show app content.

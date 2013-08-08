@@ -1,7 +1,7 @@
 /**
  * This module is used to simulate backend server for this demo application.
  */
-angular.module('content-mocks', ['ngMockE2E']).
+angular.module('accountControllerMock', ['ngMockE2E']).
 	run(function ($httpBackend) {
 	
 		var authorized = false;
