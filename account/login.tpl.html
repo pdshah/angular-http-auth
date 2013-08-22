@@ -1,6 +1,6 @@
 <div id="login-holder">
 	<div id="loginbox">
-		<div id="login-inner" ng:controller="AccountController">
+		<div id="login-inner" ng-controller="AccountCtrl">
 			Note: there is no need to enter any credentials.<br>&nbsp;
 			<form ng-submit="AccountController.authenticate(loginModel)">
 			<table border="0" cellpadding="0" cellspacing="0">
@@ -11,7 +11,7 @@
 					<th>Password</th>
 					<td><input type="password" class="login-inp" ng-model="loginModel.password"/></td>
 				</tr><tr>
-					<th></th>
+					<th><a href="#/public">Public Data</a></th>
 					<td><input type="submit" class="submit-login"/></td>
 				</tr>
 			</table>

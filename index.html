@@ -1,76 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="angularAuthApp">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Angular authorization demo application</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <!--<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />-->
 </head>
-<body ng-app="angularAuthApp" class="auth-demo-application waiting-for-angular"> 
-	<div id="initializing-panel"></div>
+<!--TODO: concreate solution for 'waiting-for-angular', 'initializing-panel' hacks-->
+<body class="auth-demo-application waiting-for-angular">
+	<!--<div id="initializing-panel"></div>-->
 
     <div id="content-outer">
-		<div id="login-holder">
-			<div id="loginbox">
-				<div id="login-inner" ng:controller="AccountController">
-					Note: there is no need to enter any credentials.<br>&nbsp;
-					<form ng-submit="AccountController.authenticate(loginModel)">
-					<table border="0" cellpadding="0" cellspacing="0">
-						<tr>
-							<th>Username</th>
-							<td><input type="text" class="login-inp" ng-model="loginModel.username"/></td>
-						</tr><tr>
-							<th>Password</th>
-							<td><input type="password" class="login-inp" ng-model="loginModel.password"/></td>
-						</tr><tr>
-							<th></th>
-							<td><input type="submit" class="submit-login"/></td>
-						</tr>
-					</table>
-					</form>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div id="content" ng-controller="AccountController">
-			<h3>Reference:<a href="http://www.espeo.pl/2012/02/26/authentication-in-angularjs-application">Authentication in AngularJS (or similar) based application.</a></h3>
-			<form ng-submit="AccountController.publicAction()">
-				<h3>Enter some data and submit to send and access public data.</h3> 
-				<input type="text" ng-model="publicData">
-				<input type="submit" value="Submit"></input>
-			</form>
-			<p ng-repeat="p in publicContent">Server says: {{p}}</p>
-			
-			<br/><br/>
-
-			<form ng-submit="AccountController.restrictedAction()">
-				<h3>Enter some data and submit to send and access protected data.</h3>
-				<input type="text" ng-model="restrictedData">
-				<input type="submit" value="Submit"></input>
-			</form>
-			<p ng-repeat="r in restrictedContent">Server says: {{r}}</p>
-
-			<br/><br/>
-
-			<h3>Press the button to log out.</h3>
-			<input type="button" value="Log out" ng-click="AccountController.logout()"></input>
-			<p>The button will tell the server to forget about your session and also it will remove sensitive data from page.</p>
-			<p>In real application it could do something else like:</p>
-			<ul>
-			  <li>forcing login window to appear to hide data,</li>
-			  <li>reloading web page to purge application from received content or</li>
-			  <li>whatever you find appropriate...</li>
-			</ul>
-			
-			<div class="clear">&nbsp;</div>
-		</div>
+		<div ng-view></div>
     </div>
         
     <script src="lib/jquery-1.7.2.js" type="text/javascript"></script>
-    <script src="lib/angular-1.0.1.js" type="text/javascript"></script>
-    <script src="lib/angular-mocks-1.0.1.js" type="text/javascript"></script>
+    <script src="lib/angular-1.1.5.js" type="text/javascript"></script>
+    <script src="lib/angular-mocks-1.1.5.js" type="text/javascript"></script>
     <script src="lib/http-auth-interceptor.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="account/account-controller.js" type="text/javascript"></script>    
     <script src="account/account-controller-mock.js" type="text/javascript"></script>
-    <script src="account/main.js" type="text/javascript"></script>
-    <script src="account/account-controller.js" type="text/javascript"></script>
+    <!--<script src="account/main.js" type="text/javascript"></script>-->
 </body>
 </html>
