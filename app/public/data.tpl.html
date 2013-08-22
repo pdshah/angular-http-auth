@@ -1,0 +1,9 @@
+<div id="content" ng-controller="AccountController">
+	<form ng-submit="AccountController.publicAction()">
+		<h3>Enter some data and submit to send and access public data.</h3> 
+		<input type="text" ng-model="publicData">
+		<input type="submit" value="Submit"></input>
+	</form>
+	<p ng-repeat="p in publicContent">Server says: {{p}}</p>	
+	<div class="clear">&nbsp;</div>
+</div>
