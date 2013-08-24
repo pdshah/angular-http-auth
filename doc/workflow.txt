@@ -1,0 +1,29 @@
+1. GET: wwww.angularauth.com/index.html
+2. Render DOM
+3. GET: jquery
+        angularjs
+        angularjs-mock
+        http-auth-service-provider
+        AccountCtrl-e2e-mock
+        authDirective
+        LoginCtrl
+        AccountCtrl
+4. authDirective: hide login section
+                  set event function: auth-loginRequired
+                                      auth-loginConfirmed
+5. on: Public data submit call: AccountCtrl.publicAction(data)->http.postData()
+                                    AccountCtrl-e2e-mock.responce[200, msg]
+                                publicDataStore.push(msg)
+                                for: data in publicDataStore: show(data)
+6. on: Restricted data submit call: AccountCtrl.restrictedAction(data)->http.postData()
+                                        AccountCtrl-e2e-mock.
+                                            isAutherised
+                                                true:responce[200, msg]
+                                                false: responce[401]
+                                    true: restrictedDataStore.push(msg)
+                                          for: data in restrictedDataStore: show(data)
+                                    false: raise event: auth-loginRequired
+                                               redirect: login page
+                                                   raise event: auth-loginConfirmed
+                                                       redirect back to page
+                                                       for: data in restrictedDataStore: show(data)
