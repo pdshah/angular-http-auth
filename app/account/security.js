@@ -32,4 +32,24 @@
         $scope.AccountCtrl = this;
         return $scope.AccountCtrl;
     }]);
+
+    /**
+    * This directive will find itself inside HTML as a class,
+    * and will remove that class, so CSS will remove loading image and show app content.
+    * It is also responsible for showing/hiding login form.
+    */
+    app.directive('restricted', ['$location', function ($location) {
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attrs) {
+                scope.$on('event:auth-loginRequired', function () {
+                    scope.$apply(function () { $location.path("/route"); });
+                });
+                scope.$on('event:auth-loginConfirmed', function () {
+                    main.show();
+                    login.slideUp();
+                });
+            }
+        }
+    }]);
 }());
