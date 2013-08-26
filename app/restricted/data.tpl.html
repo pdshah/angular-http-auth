@@ -4,12 +4,12 @@
 		<input type="text" ng-model="restrictedData"></input>
 		<input type="submit" value="Submit"></input>
 	</form>
-	<p ng-repeat="r in restrictedContent">Server says: {{r}}</p>
+	<p ng-repeat="r in restrictedContent track by $index">Server says: {{r}}</p>
 
 	<br/><br/>
 
 	<h3>Press the button to log out.</h3>
-	<input type="button" value="Log out" ng-click="AccountController.logout()"></input>
+	<input type="button" value="Log out" ng-click="AccountCtrl.logout()"></input>
 	<p>The button will tell the server to forget about your session and also it will remove sensitive data from page.</p>
 	<p>In real application it could do something else like:</p>
 	<ul>
