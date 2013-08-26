@@ -1,7 +1,7 @@
-<div id="content" ng-controller="AccountCtrl">
+<div id="content" ng-controller="AccountCtrl" restricted>
 	<form ng-submit="AccountCtrl.restrictedAction()">
 		<h3>Enter some data and submit to send and access protected data.</h3>
-		<input type="text" ng-model="restrictedData">
+		<input type="text" ng-model="restrictedData"></input>
 		<input type="submit" value="Submit"></input>
 	</form>
 	<p ng-repeat="r in restrictedContent">Server says: {{r}}</p>
