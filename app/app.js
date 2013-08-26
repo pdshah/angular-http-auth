@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('angularAuthApp', ['httpAuthInterceptor']).
+    angular.module('angularAuthApp', ['http-auth-interceptor']).
         config(['$routeProvider', function ($routeProvider) {
             $routeProvider.
                 when('/', { 'templateUrl' : 'account/login.tpl.html', 'controller' : 'AccountCtrl' }).
