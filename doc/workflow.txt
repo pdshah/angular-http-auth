@@ -1,3 +1,10 @@
+http authentication interceptor:
+--------------------------------
+1.	On http 401 errors, buffer response configuration and broadcast “login required” event.
+2.	On login confirm, broadcast “login confirmed” event and retry failed requests.
+
+Workflow
+--------------------------------
 1. GET: wwww.angularauth.com/index.html
 2. Render DOM
 3. GET: jquery
